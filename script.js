@@ -1,6 +1,6 @@
 let gameIsActive = false;
 let gameTimerIntervalId;
-let result = true;
+let result;
 let dropID;
 let seconds;
 let minutes;
@@ -8,32 +8,49 @@ let minutes;
 // Result button
 
 $("#resultBtn").on("click", function () {
-  $("#confirmBtn").trigger("click");
-  // $(".pop").css("display", "flex");
-  // $("#confirmBtn").show();
-  // $(".message").html(
-  //   `You still have time, you sure? (${$("#seconds").html()} seconds.)`
-  // );
+  checkResult();
+  if (result) {
+    return showPopUp("Woohoo, well done, you did it!.");
+  } else {
+    $(".pop").css("display", "flex");
+    $("#confirmBtn").show();
+    $(".message").html(
+      `You still have time, you sure? (${$("#seconds").html()} seconds.)`
+    );
+  }
 });
 
 // Confirm button
 
 $("#confirmBtn").on("click", function () {
+  checkResult();
+  if (result) {
+    return showPopUp("Woohoo, well done, you did it!.");
+  } else {
+    gameIsActive = false;
+    return showPopUp("It's a pity, but you lost.");
+  }
+});
+
+//Check result
+
+function checkResult() {
+  result = true;
   $.each($(".img-place"), function (index, value) {
     if (
       $(value).attr("id") - index != 1 ||
       $("#right").children().length < 16
     ) {
-      showPopUp("It's a pity, but you lost.");
-      gameIsActive = false;
       result = false;
     }
     if (index === 15 && result) {
-      showPopUp("Woohoo, well done, you did it!.");
-      return (gameIsActive = false);
+      gameIsActive = false;
+      return result = true;
+    }
+    if (index === 15 && !result) {
     }
   });
-});
+}
 
 // Start button
 
@@ -57,7 +74,6 @@ $("#closeBtn").on("click", function () {
 // Reset and prepare new Game
 
 $("#newGameBtn").on("click", function () {
-
   $("#right").empty();
   $("#left").empty();
   for (let i = 0; i < 16; i++) {
@@ -156,7 +172,7 @@ function dragAndDropOportunity() {
 
   $("#right").sortable({
     containment: "#right",
-    tolerance: "pointer"
+    tolerance: "pointer",
   });
 }
 
