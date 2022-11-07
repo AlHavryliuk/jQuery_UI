@@ -8,11 +8,12 @@ let minutes;
 // Result button
 
 $("#resultBtn").on("click", function () {
-  $(".pop").css("display", "flex");
-  $("#confirmBtn").show();
-  $(".message").html(
-    `You still have time, you sure? (${$("#seconds").html()} seconds.)`
-  );
+  $("#confirmBtn").trigger("click");
+  // $(".pop").css("display", "flex");
+  // $("#confirmBtn").show();
+  // $(".message").html(
+  //   `You still have time, you sure? (${$("#seconds").html()} seconds.)`
+  // );
 });
 
 // Confirm button
