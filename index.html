@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Puzzle</title>
+</head>
+
+<body>
+  <div class="available-zone">
+    <div class="container">
+      <div class="time-menu-block">
+        <div class="time">
+          <span id="minutes"></span>:<span id="seconds"></span>
+        </div>
+        <div class="buttons-block">
+          <button id="startBtn">Start game!</button>
+          <button id="resultBtn" disabled>Check result</button>
+          <button id="newGameBtn">New game</button>
+        </div>
+      </div>
+      <div class="puzzle-blocks">
+        <div id="left" class="puzzle-block"></div>
+        <div id="right" class="puzzle-block" onchange="checkEmpty()"></div>
+      </div>
+    </div>
+
+    <div class="pop">
+      <div class="pop__body">
+        <div class="pop__content">
+          <div class="message">You still have time, you sure?</div>
+          <div class="pop__buttons">
+            <button id="confirmBtn">Okey</button>
+            <button id="closeBtn">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+    integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
